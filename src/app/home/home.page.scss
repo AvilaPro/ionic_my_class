@@ -1,0 +1,29 @@
+#laTipa{
+  height: 30vh !important;
+  aspect-ratio: 2/1;
+}
+#logoCadi{
+  height: 50px !important;
+  padding: 10px;
+}
+.success{
+  --background: green;
+}
+.danger{
+  --background: red;
+}
+.ning{
+  --background: rgb(240, 240, 39);
+  --color: black;
+}
+@media screen and (min-width: 600px) {
+  .imgPersonaje{
+    max-height: 200px;
+    aspect-ratio: 1/1;
+    text-align: center;
+  }
+  ion-card{
+    width: 35vw;
+    display: inline-block;
+  }
+}

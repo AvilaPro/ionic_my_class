@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-img [src]="logoCadi" slot="start" id="logoCadi"></ion-img>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <ion-img id="laTipa" src="https://images.pexels.com/photos/20295964/pexels-photo-20295964/free-photo-of-puerta.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="laTipa"></ion-img>
+    <h1>Lista de usuarios</h1>
+    <ion-list>
+      <ion-item-sliding *ngFor="let char of json">
+
+        <ion-item>
+          <ion-thumbnail>
+            <img [src]="char.image" />
+          </ion-thumbnail>
+          <ion-label>{{ char.name }}</ion-label>
+          <ion-badge *ngIf="char.status === 'Alive' || char.status === 'Dead' || char.status === 'unknown'" [ngClass]="{'success': char.status === 'Alive', 'danger': char.status === 'Dead', 'ning': char.status === 'unknown' }">{{ char.status }}</ion-badge>
+          <!-- <ion-badge *ngIf="char.status === 'unknown'" color="warning">{{ char.status }}</ion-badge> -->
+        </ion-item>
+
+        <ion-item-options side="start">
+          <ion-item-option >Favorite</ion-item-option>
+          <ion-item-option color="primary">Share</ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="end">
+          <ion-item-option>Unread</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <div style="align-items: center; padding: 0 10vw;">
+      <ion-card *ngFor="let personaje of json">
+        <ion-card-header>
+          <ion-card-subtitle>{{personaje.species}}</ion-card-subtitle>
+          <ion-card-title>{{personaje.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img class="imgPersonaje" [src]="personaje.image"></ion-img>
+          <ion-text color="dark">
+            <h5>Ciudad: {{personaje.location.name}}</h5>
+          </ion-text>
+          <ion-text color="tertiary">Genero: {{personaje.gender}}</ion-text>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </div>
+  <app-links></app-links>
+</ion-content>
