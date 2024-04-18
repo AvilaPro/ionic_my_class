@@ -1,134 +1,153 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-img [src]="logoCadi" slot="start" id="logoCadi"></ion-img>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">This is the menu content.</ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-img [src]="logoCadi" slot="start" id="logoCadi"></ion-img>
+      <ion-title>
+        Blank
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="['/perfil']" >
+          <ion-icon slot="start" name="person"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <div>
-    <ion-nav animated="true" [root]="component" swipeGesture="true"></ion-nav>
-    <ion-img id="laTipa"
-      src="https://images.pexels.com/photos/20295964/pexels-photo-20295964/free-photo-of-puerta.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      alt="laTipa"></ion-img>
-    <h1>Lista de usuarios</h1>
-    <ion-segment [scrollable]="true" value="heart">
-      <ion-segment-button value="home">
-        <ion-icon name="home"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="heart">
-        <ion-icon name="heart"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="pin">
-        <ion-icon name="pin"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="star">
-        <ion-icon name="star"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="call">
-        <ion-icon name="call"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="globe">
-        <ion-icon name="globe"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="basket">
-        <ion-icon name="basket"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="barbell">
-        <ion-icon name="barbell"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="trash">
-        <ion-icon name="trash"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="person">
-        <ion-icon name="person"></ion-icon>
-      </ion-segment-button>
-    </ion-segment>
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Blank</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
     <div>
-      <ion-chip color="tertiary">Humanos</ion-chip>
-      <ion-chip color="tertiary">Aliens</ion-chip>
-      <ion-chip color="tertiary">Unknows</ion-chip>
-      <ion-chip color="tertiary">Humanos</ion-chip>
-      <ion-chip color="tertiary">Aliens</ion-chip>
-      <ion-chip color="tertiary">Unknows</ion-chip>
+
+      <ion-img id="laTipa"
+        src="https://images.pexels.com/photos/20295964/pexels-photo-20295964/free-photo-of-puerta.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="laTipa"></ion-img>
+      <h1>Lista de usuarios</h1>
+      <ion-segment [scrollable]="true" value="heart">
+        <ion-segment-button value="home">
+          <ion-icon name="home"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="heart">
+          <ion-icon name="heart"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="pin">
+          <ion-icon name="pin"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="star">
+          <ion-icon name="star"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="call">
+          <ion-icon name="call"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="globe">
+          <ion-icon name="globe"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="basket">
+          <ion-icon name="basket"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="barbell">
+          <ion-icon name="barbell"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="trash">
+          <ion-icon name="trash"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="person">
+          <ion-icon name="person"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+      <div>
+        <ion-chip color="tertiary">Humanos</ion-chip>
+        <ion-chip color="tertiary">Aliens</ion-chip>
+        <ion-chip color="tertiary">Unknows</ion-chip>
+        <ion-chip color="tertiary">Humanos</ion-chip>
+        <ion-chip color="tertiary">Aliens</ion-chip>
+        <ion-chip color="tertiary">Unknows</ion-chip>
+      </div>
+      <ion-button id="open-action-sheet">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="start" name="caret-forward-circle"></ion-icon>
+        navegar
+      </ion-button>
+
+      <ion-list>
+        <ion-item-sliding *ngFor="let char of json">
+
+          <ion-item [color]="itemSelected ? 'success': ''">
+            <ion-thumbnail>
+              <img [src]="char.image" />
+            </ion-thumbnail>
+            <ion-label>{{ char.name }}</ion-label>
+            <ion-badge *ngIf="char.status === 'Alive' || char.status === 'Dead' || char.status === 'unknown'"
+              [ngClass]="{'success': char.status === 'Alive', 'danger': char.status === 'Dead', 'ning': char.status === 'unknown' }">{{
+              char.status }}</ion-badge>
+            <!-- <ion-badge *ngIf="char.status === 'unknown'" color="warning">{{ char.status }}</ion-badge> -->
+          </ion-item>
+
+          <ion-item-options side="start" >
+            <ion-item-option (click)="setOpenAlert(true, char)" color="success">Comprar</ion-item-option>
+            <ion-item-option color="primary">Compartir</ion-item-option>
+          </ion-item-options>
+
+          <ion-item-options side="end">
+            <ion-item-option>Unread</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+
+      <div style="align-items: center; padding: 0 10vw;">
+        <ion-card *ngFor="let personaje of json" (click)="setOpen(true, personaje)">
+          <ion-card-header>
+            <ion-card-subtitle>{{personaje.species}}</ion-card-subtitle>
+            <ion-card-title>{{personaje.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img class="imgPersonaje" [src]="personaje.image"></ion-img>
+            <ion-text color="dark">
+              <h5>Ciudad: {{personaje.location.name}}</h5>
+            </ion-text>
+            <ion-text color="tertiary">Genero: {{personaje.gender}}</ion-text>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+
+
+      <ion-toast [isOpen]="isToastOpen" [message]=toastMessage [duration]="5000" position="middle"
+        (didDismiss)="setOpen(false, '')">
+      </ion-toast>
+
+      <ion-alert
+      [isOpen]="isAlertOpen"
+      header="Confirmacion de compra"
+      subHeader="Indicar si lo desea!"
+      [message]=alertMessage
+      [buttons]="alertButtons"
+      (didDismiss)="setOpenAlert(false, '')">
+      </ion-alert>
+
+      <ion-action-sheet
+      trigger="open-action-sheet"
+      header="Actividades"
+      [buttons]="actionSheetButtons"></ion-action-sheet>
+
     </div>
-    <ion-button id="open-action-sheet">
-      <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-    </ion-button>
-    <ion-button>
-      <ion-icon slot="start" name="caret-forward-circle"></ion-icon>
-      navegar
-    </ion-button>
-
-    <ion-list>
-      <ion-item-sliding *ngFor="let char of json">
-
-        <ion-item [color]="itemSelected ? 'success': ''">
-          <ion-thumbnail>
-            <img [src]="char.image" />
-          </ion-thumbnail>
-          <ion-label>{{ char.name }}</ion-label>
-          <ion-badge *ngIf="char.status === 'Alive' || char.status === 'Dead' || char.status === 'unknown'"
-            [ngClass]="{'success': char.status === 'Alive', 'danger': char.status === 'Dead', 'ning': char.status === 'unknown' }">{{
-            char.status }}</ion-badge>
-          <!-- <ion-badge *ngIf="char.status === 'unknown'" color="warning">{{ char.status }}</ion-badge> -->
-        </ion-item>
-
-        <ion-item-options side="start" >
-          <ion-item-option (click)="setOpenAlert(true, char)" color="success">Comprar</ion-item-option>
-          <ion-item-option color="primary">Compartir</ion-item-option>
-        </ion-item-options>
-
-        <ion-item-options side="end">
-          <ion-item-option>Unread</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-
-    <div style="align-items: center; padding: 0 10vw;">
-      <ion-card *ngFor="let personaje of json" (click)="setOpen(true, personaje)">
-        <ion-card-header>
-          <ion-card-subtitle>{{personaje.species}}</ion-card-subtitle>
-          <ion-card-title>{{personaje.name}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-img class="imgPersonaje" [src]="personaje.image"></ion-img>
-          <ion-text color="dark">
-            <h5>Ciudad: {{personaje.location.name}}</h5>
-          </ion-text>
-          <ion-text color="tertiary">Genero: {{personaje.gender}}</ion-text>
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-
-
-    <ion-toast [isOpen]="isToastOpen" [message]=toastMessage [duration]="5000" position="middle"
-      (didDismiss)="setOpen(false, '')">
-    </ion-toast>
-
-    <ion-alert
-    [isOpen]="isAlertOpen"
-    header="Confirmacion de compra"
-    subHeader="Indicar si lo desea!"
-    [message]=alertMessage
-    [buttons]="alertButtons"
-    (didDismiss)="setOpenAlert(false, '')">
-    </ion-alert>
-
-    <ion-action-sheet
-    trigger="open-action-sheet"
-    header="Actividades"
-    [buttons]="actionSheetButtons"></ion-action-sheet>
-
-  </div>
-  <app-links></app-links>
-</ion-content>
+    <app-links></app-links>
+  </ion-content>
+</div>

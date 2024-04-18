@@ -1,0 +1,15 @@
+swiper-container {
+  width: 40%;
+  height: 320px;
+}
+
+swiper-slide {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}

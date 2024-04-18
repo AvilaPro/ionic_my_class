@@ -1,6 +1,42 @@
-<p>
-  one-component works!
-</p>
-<ion-nav-link router-direction="forward" [component]="component">
-  <ion-button>Go to Page Two</ion-button>
-</ion-nav-link>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>One Componente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button expand="block" fill="clear" shape="round" id="filtro">
+    Filtrar
+  </ion-button>
+  <h1 *ngIf="message !== ''">{{ message }}</h1>
+  <ion-modal trigger="filtro" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Filtra categoria</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirmar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Ingresa la categoria"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Categoria..."
+            [(ngModel)]="name"
+          ></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <ion-nav-link router-direction="forward" [component]="component">
+    <ion-button>Go to Page Two</ion-button>
+  </ion-nav-link>
+</ion-content>
+

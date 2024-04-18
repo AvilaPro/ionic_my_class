@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf, NgClass } from "@angular/common";
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonLabel, IonItem, IonAvatar, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonThumbnail, IonImg, IonBadge, IonCardSubtitle, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonText, IonToast, IonAlert, IonActionSheet, IonButton, IonChip, IonSegment, IonSegmentButton, IonNav } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonLabel, IonItem, IonAvatar, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonThumbnail, IonImg, IonBadge, IonCardSubtitle, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonText, IonToast, IonAlert, IonActionSheet, IonButton, IonChip, IonSegment, IonSegmentButton, IonNav, IonButtons, IonMenu, IonMenuButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart, addCircle, home, pin, star, call, globe, basket, barbell, trash, person, caretForwardCircle } from "ionicons/icons";
 import { LinksComponent } from "../components/links/links.component";
 import { OneComponentComponent } from "../components/one-component/one-component.component";
+
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonText, IonCardContent, IonCardTitle, IonCard, IonCardHeader, IonCardSubtitle, IonBadge, IonImg, IonItemOptions, IonItemOption, IonItemSliding, IonList, IonAvatar, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, NgFor, IonThumbnail, NgIf, NgClass, LinksComponent, IonToast, IonAlert, IonActionSheet, IonButton, IonChip, IonSegment, IonSegmentButton, IonNav],
+  imports: [IonButtons, IonText, IonCardContent, IonCardTitle, IonCard, IonCardHeader, IonCardSubtitle, IonBadge, IonImg, IonItemOptions, IonItemOption, IonItemSliding, IonList, IonAvatar, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, NgFor, IonThumbnail, NgIf, NgClass, LinksComponent, IonToast, IonAlert, IonActionSheet, IonButton, IonChip, IonSegment, IonSegmentButton, IonNav, RouterModule, IonMenu, IonMenuButton],
 })
 export class HomePage {
   component = OneComponentComponent;
