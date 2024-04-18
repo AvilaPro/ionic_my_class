@@ -1,0 +1,15 @@
+.seleccionado{
+  background-color: green;
+}
+.vivo{
+  background: rgba(14, 139, 14, 0.503);
+}
+.desconocido{
+  background: rgba(232, 232, 36, 0.62);
+}
+.muerto{
+  background: rgba(230, 28, 28, 0.6);
+}
+div[class="card"]{
+  border: solid lightgray 3px;
+}

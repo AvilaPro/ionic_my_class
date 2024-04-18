@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <button class="btn btn-secondary" (click)="mostrar = !mostrar">Ver personajes</button>
+    @if (mostrar) {
+      <div class="row">
+        @for (personaje of json; track personaje.id) {
+          <div class="card col-4" [ngClass]="{'vivo': personaje.status == 'Alive'}" #carta (click)="infoCard(carta)">
+            <div class="card-header">
+              <div>{{personaje.species}}</div>
+              <div>{{personaje.name}}</div>
+            </div>
+            <img class="card-img-top" [src]="personaje.image" />
+            <div class="card-body">
+              <span style="display: none;">{{ personaje.id }}</span>
+              <h5>Ciudad: {{personaje.location.name}}</h5>
+              <p>Genero: {{personaje.gender}}</p>
+              <!-- <p class="text-success fw-bold" *ngIf="personaje.status == 'Alive'">Vivo</p> -->
+              @switch (personaje.status) {
+                @case ("Alive") {
+                  <p class="text-success fw-bold">{{personaje.status}}</p>
+                }
+                @case ("unknown") {
+                  <p class="text-warning">{{personaje.status}}</p>
+                }
+                @case ("Dead") {
+                  <p class="text-danger fw-bold">{{personaje.status}}</p>
+                }
+                @default {
+                  <p class="text-primary fw-bold">Status desconocido</p>
+                }
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

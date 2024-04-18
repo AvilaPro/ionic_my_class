@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { RouterOutlet } from '@angular/router';
+
+// Componentes
+import { HeaderComponent } from "./components/header/header.component";
+import { PersonajesComponent } from "./components/personajes/personajes.component";
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html',
   standalone: true,
-  imports: [IonApp, IonRouterOutlet],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    PersonajesComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor() {}
+
+
+
+
 }
