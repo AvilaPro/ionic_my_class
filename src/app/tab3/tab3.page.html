@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Ubicacion
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,23 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Ubicacion</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div *ngIf="false">
+    <h3>Posicion Actual</h3>
+    <p>Latitud: {{ latitud }}</p>
+    <p>Longitud: {{ longitud }}</p>
+  </div>
+  <ion-button (click)="obtenerPosicion()" shape="round">
+    <ion-icon slot="icon-only" name="location"></ion-icon>
+  </ion-button>
+  <a [href]="lugar" *ngIf="lugar !== ''" target="_blank">
+    <ion-button shape="round">
+      <ion-icon slot="icon-only" name="pin"></ion-icon>
+    </ion-button>
+  </a>
+
+  <capacitor-google-map #map></capacitor-google-map>
 </ion-content>
