@@ -1,5 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon } from '@ionic/angular/standalone';
 
 import { addIcons } from "ionicons";
@@ -10,7 +11,7 @@ import { menu, person } from "ionicons/icons";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, NgFor],
+  imports: [IonIcon, IonButton, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, NgFor, RouterLink],
 })
 export class HomePage {
   productos: any;
@@ -25,7 +26,7 @@ export class HomePage {
     then(data => {
       this.productos = data
       console.log(this.productos);
-    }) 
+    })
   }
 
 }
