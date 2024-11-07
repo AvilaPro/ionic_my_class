@@ -37,3 +37,20 @@
 #container a {
   text-decoration: none;
 }
+
+.confirmToastBtn{
+  background: rgba(255, 53, 255, 0.632);
+}
+.cancelToastBtn{
+  background: rgba(79, 6, 79, 0.614);
+}
+
+ion-chip {
+  --background: #00213f;
+  --color: #adefd1;
+}
+
+ion-segment {
+  --background: #54dc98;
+  margin: 15px 0;
+}

@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Page One</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>Page One</h1>
+  <ion-nav-link router-direction="forward" [component]="component">
+    <ion-button>Ir a Second Component</ion-button>
+  </ion-nav-link>
+  <ion-button (click)="navegar('home')">
+    <ion-icon slot="start" name="caret-back-circle"></ion-icon>
+    Ir a Home
+  </ion-button>
+</ion-content>

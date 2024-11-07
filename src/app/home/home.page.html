@@ -9,6 +9,15 @@
       Tienda
     </ion-title>
     <ion-buttons slot="end">
+      <ion-button (click)="abrirModal()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+      <ion-button (click)="abrirActionSheet()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/nav']" routerLinkActive="router-link-active"  >
+        <ion-icon name="map"></ion-icon>
+      </ion-button>
       <ion-button [routerLink]="['/profile']" routerLinkActive="router-link-active"  >
         <ion-icon name="person"></ion-icon>
       </ion-button>
@@ -26,15 +35,23 @@
   <div id="container">
     <h1>Bienvenido a nuestra tienda</h1>
     <p>En esta tienda podrás encontrar los mejores productos</p>
+    <ion-segment value="custom">
+      <ion-segment-button value="custom">
+        <ion-label>Custom</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="segment">
+        <ion-label>Segment</ion-label>
+      </ion-segment-button>
+    </ion-segment>
     <section class="container">
       <div class="row justify-content-around gap-3 gap-md-1">
         <article *ngFor="let product of productos" class="card col-md-4 col-5 border border-3 rounded-3 border-primary shadow-lg">
-          <img [src]="product.image" class="card-img-top" alt="imagen">
+          <img [src]="product.image" class="card-img-top" alt="imagen" (click)="crearAlert(product.title, product.price, product.category)">
           <div class="card-body">
             <h6 class="card-title">{{product.title}}</h6>
             <p class="card-text text-truncate">{{product.description}}</p>
-            <p class="text-success fw-bold">{{product.price}}</p>
-            <a href="#" class="btn btn-primary btn-sm" style="margin-top: 10px;">Buy</a>
+            <ion-chip>${{product.price}}</ion-chip>
+            <button class="btn btn-primary btn-sm" style="margin-top: 10px;" (click)="crearToast(product.title)">Buy</button>
           </div>
         </article>
       </div>
