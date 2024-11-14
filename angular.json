@@ -31,14 +31,8 @@
                 "output": "assets"
               }
             ],
-            "styles": [
-              "src/global.scss",
-              "src/theme/variables.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss"
-            ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "styles": ["src/global.scss", "src/theme/variables.scss", "node_modules/swiper/swiper.scss"],
+            "scripts": ["node_modules/swiper/swiper.min.js"]
           },
           "configurations": {
             "production": {

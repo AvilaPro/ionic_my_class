@@ -1,24 +1,12 @@
-#container{
-  > h1{
-    text-align: center;
-  }
-}
-.card{
-  & p{
-    margin: 0;
-  }
-}
-.card-img-top{
-  aspect-ratio: 1/1;
-  min-width: 95%;
-}
-.card-text{
-  height: 15%;
-  // overflow: hidden;
-  // text-overflow: ellipsis;
-  margin: 7px 0;
-}
+#container {
+  text-align: center;
 
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 #container strong {
   font-size: 20px;
@@ -36,21 +24,4 @@
 
 #container a {
   text-decoration: none;
-}
-
-.confirmToastBtn{
-  background: rgba(255, 53, 255, 0.632);
-}
-.cancelToastBtn{
-  background: rgba(79, 6, 79, 0.614);
-}
-
-ion-chip {
-  --background: #00213f;
-  --color: #adefd1;
-}
-
-ion-segment {
-  --background: #54dc98;
-  margin: 15px 0;
 }

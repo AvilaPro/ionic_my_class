@@ -68,8 +68,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
-.browserslistrc
-.editorconfig
-.eslintrc.json
-.vscode
