@@ -1,5 +1,7 @@
 {
-  "name": "menuApp",
-  "integrations": {},
+  "name": "store",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular-standalone"
 }
