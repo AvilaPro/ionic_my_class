@@ -13,20 +13,46 @@ import { Swiper } from "swiper";
 // import { CapacitorFlash, CapacitorFlashPlugin } from '@capgo/capacitor-flash'
 import { Flashlight } from "@awesome-cordova-plugins/flashlight/ngx";
 
+//modulos de Network-Capacitor
+import { Network, ConnectionStatus } from "@capacitor/network";
+
+import { ToastController } from "@ionic/angular";
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.page.html',
   styleUrls: ['./products.page.scss'],
   providers: [Flashlight],
   standalone: true,
-  imports: [IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, IonMenuToggle, IonIcon]
+  imports: [IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuToggle, IonIcon]
 })
 export class ProductsPage implements OnInit {
   luz: boolean = false;
+  networkStatus: any;
 
-  constructor(private menuCtrl: MenuController, public linterna: Flashlight) {
+  constructor(private menuCtrl: MenuController, public linterna: Flashlight, private toastController: ToastController) {
     addIcons({menu,flashlight,homeOutline,receiptOutline});
+
+    if (Network) {
+      Network.getStatus().then((status) => {
+        this.networkStatus = status;
+        console.log(this.networkStatus);
+      })
+    }
+    Network.addListener("networkStatusChange", status => {
+      this.networkStatus = status;
+      this.presentToast('bottom', status);
+    })
    }
+
+  async presentToast(position: 'top' | 'middle' | 'bottom', msg: ConnectionStatus){
+    const toast = await this.toastController.create({
+      message: 'Conectado: ' + msg.connected + '; tipo de conexion: ' + msg.connectionType,
+      position: position,
+      duration: 4000,
+    });
+    await toast.present();
+  }
 
   encenderLuz(){
     this.luz = !this.luz;
