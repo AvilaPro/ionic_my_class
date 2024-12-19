@@ -25,6 +25,9 @@ export class HomePage {
       if (!res) {
         this.router.navigate([path]);
       }
-    }); 
+    });
+  }
+  navegar(path: string){
+    this.router.navigate([path]);
   }
 }

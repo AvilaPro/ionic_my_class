@@ -7,6 +7,9 @@
     </ion-buttons>
     <ion-title>products</ion-title>
     <ion-buttons slot="end">
+      <ion-button id="present-alert" expand="block" fill="clear" shape="round">
+        <ion-icon slot="start" name="heart"></ion-icon>
+      </ion-button>
       <ion-button (click)="encenderLuz()">
         <ion-icon slot="start" name="flashlight"></ion-icon>
       </ion-button>
@@ -20,24 +23,18 @@
       <ion-title size="large">products</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!-- <ion-toast
+    [isOpen]="isToastOpen"
+    message="Conectado: {{networkStatus.connected}} tipo de conexion: {{networkStatus.connectionType}}"
+    [duration]="5000"
+    (didDismiss)="setOpen(false)"
+  ></ion-toast> -->
   <!-- Slider main container -->
-  <div class="swiper">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      ...
-    </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
-  </div>
+  <ion-alert
+  trigger="present-alert"
+  header="A Short Title Is Best"
+  subHeader="A Sub Header Is Optional"
+  message="A message should be a short, complete sentence."
+  [buttons]="alertButtons"
+></ion-alert>
 </ion-content>

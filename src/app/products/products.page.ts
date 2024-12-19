@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonMenuToggle, IonIcon, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonMenuToggle, IonIcon, IonButton, IonAlert, IonToast } from '@ionic/angular/standalone';
 
 import { MenuController } from "@ionic/angular";
 
 import { addIcons } from 'ionicons';
-import { homeOutline, receiptOutline, menu, flashlight } from 'ionicons/icons';
+import { homeOutline, receiptOutline, menu, flashlight, heart } from 'ionicons/icons';
 
 import { Swiper } from "swiper";
 
@@ -16,7 +16,7 @@ import { Flashlight } from "@awesome-cordova-plugins/flashlight/ngx";
 //modulos de Network-Capacitor
 import { Network, ConnectionStatus } from "@capacitor/network";
 
-import { ToastController } from "@ionic/angular";
+import { ToastController, AlertController } from "@ionic/angular";
 
 @Component({
   selector: 'app-products',
@@ -24,26 +24,24 @@ import { ToastController } from "@ionic/angular";
   styleUrls: ['./products.page.scss'],
   providers: [Flashlight],
   standalone: true,
-  imports: [IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuToggle, IonIcon]
+  imports: [IonToast, IonAlert, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuToggle, IonIcon]
 })
 export class ProductsPage implements OnInit {
   luz: boolean = false;
   networkStatus: any;
 
-  constructor(private menuCtrl: MenuController, public linterna: Flashlight, private toastController: ToastController) {
-    addIcons({menu,flashlight,homeOutline,receiptOutline});
+  alertButtons = ['Action'];
 
-    if (Network) {
-      Network.getStatus().then((status) => {
-        this.networkStatus = status;
-        console.log(this.networkStatus);
-      })
-    }
-    Network.addListener("networkStatusChange", status => {
-      this.networkStatus = status;
-      this.presentToast('bottom', status);
-    })
-   }
+  isToastOpen = false;
+
+
+  constructor(private menuCtrl: MenuController, public linterna: Flashlight, private toastController: ToastController, private alertController: AlertController) {
+    addIcons({menu,flashlight,homeOutline,receiptOutline, heart});
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isToastOpen = isOpen;
+  }
 
   async presentToast(position: 'top' | 'middle' | 'bottom', msg: ConnectionStatus){
     const toast = await this.toastController.create({
@@ -52,6 +50,16 @@ export class ProductsPage implements OnInit {
       duration: 4000,
     });
     await toast.present();
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'A Short Title Is Best',
+      subHeader: 'A Sub Header Is Optional',
+      message: 'A message should be a short, complete sentence.',
+      buttons: ['Action'],
+    });
+
+    await alert.present();
   }
 
   encenderLuz(){
@@ -68,6 +76,17 @@ export class ProductsPage implements OnInit {
 
 
   ngOnInit() {
+    if (Network) {
+      Network.getStatus().then((status) => {
+        this.networkStatus = status;
+        console.log(this.networkStatus);
+      })
+    }
+    Network.addListener("networkStatusChange", status => {
+      this.networkStatus = status;
+      this.setOpen(true);
+    }).then(() => {
+    })
   }
 
   async abrirMenu(): Promise<any>{
